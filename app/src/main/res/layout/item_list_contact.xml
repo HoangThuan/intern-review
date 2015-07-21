@@ -30,7 +30,7 @@
         android:gravity="center_vertical"
         android:layout_height="match_parent">
         <TextView
-            android:id="@+id/txNameContact"
+            android:id="@+id/tvNameContact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin.left"
@@ -47,21 +47,18 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:layout_height="match_parent">
-        <Button
-            android:layout_width="@dimen/with.button.item.contact"
-            android:layout_height="@dimen/hight.button.item.contact"
-            android:text="@string/text.button.edit"
-            android:textSize="@dimen/size.text.button"
-            android:background="@drawable/bg_custome_button"
-            android:id="@+id/btnEdit"/>
-        <Button
-            android:layout_marginLeft="@dimen/margin.right"
-            android:layout_width="@dimen/with.button.item.contact"
-            android:layout_height="@dimen/hight.button.item.contact"
-            android:text="@string/text.button.delete"
-            android:background="@drawable/bg_custome_button"
-            android:textSize="@dimen/size.text.button"
-            android:id="@+id/btnDelete"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_edit_contact"
+            android:id="@+id/imgEdit"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_delete_contact"
+            android:layout_marginLeft="@dimen/margin.left.image.edit"
+            android:id="@+id/imgDelete"/>
     </LinearLayout>
 
 </RelativeLayout>
