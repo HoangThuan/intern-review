@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rlActionBar"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/hight.actionbar"
+        android:background="@color/color.actionbar"
+        android:gravity="center_vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/margin.left"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_back"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/margin.left"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size.text.title.contact"
+                android:text="@string/text.title.contact"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/llCenter"
+        android:layout_below="@+id/rlActionBar"
+        android:orientation="vertical">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/llDisplayFomation"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_height="@dimen/hight.display.image.avata.contact">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin.left"
+                android:background="@drawable/bg_custome_image"
+                android:padding="@dimen/margin.top.avata">
+
+                <intership.dev.customeview.CustomeCycleImageView
+                    android:id="@+id/custom_ImageView"
+                    android:layout_width="@dimen/with.avata.contact"
+                    android:layout_height="@dimen/hight.avata.contact"
+                    android:src="@mipmap/img_contact1"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin.left"
+                >
+                <TextView
+                    android:id="@+id/tvNameContact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/size.text.username.contact"
+                    android:text="@string/text.item"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/hight.size.boder.view"
+            android:background="@color/color.border.view"/>
+
+        <EditText
+            android:id="@+id/edtNameContact"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/margin.top"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin.left"
+            android:background="@color/color.border.view"
+            android:text="@string/text.item"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/edtDeseription"
+            android:layout_marginTop="@dimen/margin.top"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin.left"
+            android:background="@color/color.border.view"
+            android:text="@string/text.item"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llMenuBottom"
+        android:layout_alignParentBottom="true"
+        android:weightSum="2"
+        android:background="@drawable/bg_custome_dialog"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/hight.menu.below.contact">
+        <LinearLayout
+            android:id="@+id/llSave"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:background="@drawable/selector_custome_dialog"
+            android:orientation="vertical"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_height="match_parent"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text.menu.save"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/llCannel"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            android:background="@drawable/selector_custome_dialog"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_height="match_parent"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text.menu.cannel"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
