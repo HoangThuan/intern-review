@@ -173,13 +173,13 @@ public class ContactsPageAdapter extends BaseAdapter {
             public void onClick(View v) {
                 mDb= mContactSqlite.getWritableDatabase();
                 if(mContactSqlite.deleteContact(mContacts.get(postion).getmId())){
-                    Toast.makeText(ContactsFragment.GET_ACTIVITY,R.string.messages_noti_remove_success,Toast.LENGTH_LONG).show();
+                    Toast.makeText(ContactsFragment.GET_ACTIVITY,R.string.messages_noti_Contact_remove_success,Toast.LENGTH_LONG).show();
                     mContacts.remove(postion);
                     notifyDataSetChanged();
                     popup.dismiss();
                 }
                 else{
-                    Toast.makeText(ContactsFragment.GET_ACTIVITY,R.string.messages_noti_remove_error,Toast.LENGTH_LONG).show();
+                    Toast.makeText(ContactsFragment.GET_ACTIVITY,R.string.messages_noti_Contact_dont_remove,Toast.LENGTH_LONG).show();
                 }
 
 
