@@ -80,6 +80,10 @@ public class ContactsFragment extends Fragment {
 
     }
 
+    /**
+     * class get data from table in Sqlite with limit equas ten
+     */
+
     private class getData extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
@@ -120,7 +124,10 @@ public class ContactsFragment extends Fragment {
         }
     }
 
-
+    /**
+     * class load more data , add data into listview when
+     * listview execute event onScrollStateChanged
+     */
     private class LoadMoreDataTask extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
