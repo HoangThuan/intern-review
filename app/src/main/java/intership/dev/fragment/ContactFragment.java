@@ -78,11 +78,11 @@ public class ContactFragment extends Fragment implements View.OnClickListener{
         if(view == llSave){
          mDb = mContactSqlite.getWritableDatabase();
             if(mContactSqlite.updateContact(mContactItem.getmId(),edtNameContact.getText().toString(),edtDescription.getText().toString())){
-                Toast.makeText(getActivity(),R.string.messages_noti_update_success,Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),R.string.messages_noti_Contact_update_success,Toast.LENGTH_LONG).show();
                 this.getActivity().onBackPressed();
             }
             else {
-                Toast.makeText(getActivity(),R.string.messages_noti_update_error,Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),R.string.messages_noti_Contact_dont_update,Toast.LENGTH_LONG).show();
             }
         }
 
