@@ -73,15 +73,13 @@ public class ContactFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         if(view == llCannel){
-            Intent intent = new Intent(getActivity(),MainActivity.class);
-            startActivity(intent);
+            this.getActivity().onBackPressed();
         }
         if(view == llSave){
          mDb = mContactSqlite.getWritableDatabase();
             if(mContactSqlite.updateContact(mContactItem.getmId(),edtNameContact.getText().toString(),edtDescription.getText().toString())){
                 Toast.makeText(getActivity(),R.string.messages_noti_update_success,Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getActivity(),MainActivity.class);
-                startActivity(intent);
+                this.getActivity().onBackPressed();
             }
             else {
                 Toast.makeText(getActivity(),R.string.messages_noti_update_error,Toast.LENGTH_LONG).show();
