@@ -97,6 +97,7 @@ public class ContactsPageAdapter extends BaseAdapter {
                 bundle.putSerializable("SEND_DATA",contactItem);
                 fragment.setArguments(bundle);
                 fragmentTransaction.replace(R.id.flFragmentPlace, fragment);
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
         });
@@ -176,6 +177,9 @@ public class ContactsPageAdapter extends BaseAdapter {
                     mContacts.remove(postion);
                     notifyDataSetChanged();
                     popup.dismiss();
+                }
+                else{
+                    Toast.makeText(ContactsFragment.GET_ACTIVITY,R.string.messages_noti_remove_error,Toast.LENGTH_LONG).show();
                 }
 
 
