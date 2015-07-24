@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_marginLeft="@dimen/margin.left"
-        android:layout_marginTop="@dimen/margin.top.avata"
+        android:layout_marginTop="@dimen/avata.margin.top"
         android:id="@+id/llLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin.left"
-            android:text="@string/text.item"
+            android:text="@string/text.item.Burch_this_weekend"
             android:textSize="@dimen/text.size"
             />
     </LinearLayout>
@@ -51,13 +51,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_edit_contact"
+            android:layout_marginRight="@dimen/margin.right"
             android:id="@+id/imgEdit"
             />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_delete_contact"
-            android:layout_marginLeft="@dimen/margin.left.image.edit"
+            android:layout_marginLeft="@dimen/margin.left.image_edit"
             android:id="@+id/imgDelete"/>
     </LinearLayout>
 
