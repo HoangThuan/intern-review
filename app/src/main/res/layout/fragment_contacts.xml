@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:textSize="@dimen/size.text.title.contact"
+                android:textSize="@dimen/size.text_title_contact"
                 android:text="@string/text.title.contacts"/>
         </LinearLayout>
 
