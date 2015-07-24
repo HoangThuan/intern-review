@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:textSize="@dimen/size.text.title.contact"
+                android:textSize="@dimen/size.text_title_contact"
                 android:text="@string/text.title.contact"/>
         </LinearLayout>
 
@@ -55,18 +55,18 @@
             android:id="@+id/llDisplayFomation"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_height="@dimen/hight.display.image.avata.contact">
+            android:layout_height="@dimen/hight.display.image_avata_contact">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin.left"
                 android:background="@drawable/bg_custome_image"
-                android:padding="@dimen/margin.top.avata">
+                android:padding="@dimen/avata.margin.top">
 
                 <intership.dev.customeview.CustomeCycleImageView
                     android:id="@+id/custom_ImageView"
-                    android:layout_width="@dimen/with.avata.contact"
-                    android:layout_height="@dimen/hight.avata.contact"
+                    android:layout_width="@dimen/with.avata_contact"
+                    android:layout_height="@dimen/hight.avata_contact"
                     android:src="@mipmap/img_contact1"/>
 
             </LinearLayout>
@@ -79,24 +79,26 @@
                     android:id="@+id/tvNameContact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/size.text.username.contact"
-                    android:text="@string/text.item"/>
+                    android:textSize="@dimen/size.text_username_contact"
+                    android:text="@string/text.item.Burch_this_weekend"/>
             </LinearLayout>
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/hight.size.boder.view"
+            android:layout_height="@dimen/hight.boder_view"
+            android:layout_marginBottom="@dimen/margin.bottom"
             android:background="@color/color.border.view"/>
 
         <EditText
             android:id="@+id/edtNameContact"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/margin.top"
+            android:layout_marginBottom="@dimen/margin.bottom"
             android:layout_height="wrap_content"
             android:padding="@dimen/margin.left"
             android:background="@color/color.border.view"
-            android:text="@string/text.item"/>
+            android:text="@string/text.item.Burch_this_weekend"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -105,7 +107,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/margin.left"
             android:background="@color/color.border.view"
-            android:text="@string/text.item"/>
+            android:text="@string/text.item.Burch_this_weekend"/>
     </LinearLayout>
 
     <LinearLayout
@@ -115,7 +117,7 @@
         android:background="@drawable/bg_custome_dialog"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/hight.menu.below.contact">
+        android:layout_height="@dimen/hight.menu_below_contact">
         <LinearLayout
             android:id="@+id/llSave"
             android:layout_weight="1"
