@@ -4,11 +4,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-  <fragment
-      android:id="@+id/frPlace"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      class="intership.dev.fragment.ContactsFragment"/>
+  <FrameLayout
+    android:id="@+id/flFragmentPlace"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
 
 
 </RelativeLayout>

@@ -3,11 +3,11 @@
     android:id="@+id/llDialog"
     android:layout_width="@dimen/with.dialog"
     android:layout_height="@dimen/hight.dialog"
-    android:background="@drawable/bg_custome_dialog"
+    android:background="@drawable/custome_color_boder_view"
     android:weightSum="3"
     android:orientation="vertical" >
     <LinearLayout
-        android:layout_height="0dp"
+        android:layout_height="@dimen/hight.weight"
         android:layout_width="match_parent"
         android:layout_weight="2"
         android:orientation="vertical"
@@ -23,7 +23,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_height="0dp"
+        android:layout_height="@dimen/hight.weight"
         android:layout_width="match_parent"
         android:weightSum="2"
         android:layout_weight="1"
@@ -31,7 +31,7 @@
         android:background="@drawable/custome_backroug_dialog">
         <LinearLayout
             android:layout_height="match_parent"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/with.weight"
             android:layout_weight="1"
             android:id="@+id/llCannel"
             android:gravity="center_vertical|center_horizontal">
@@ -45,14 +45,14 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="1dp"
+            android:layout_width="@dimen/with.weight"
             android:layout_height="match_parent"
             android:background="@color/blue">
         </LinearLayout>
 
         <LinearLayout
             android:layout_height="match_parent"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/with.weight"
             android:layout_weight="1"
             android:id="@+id/llOk"
             android:gravity="center_vertical|center_horizontal">
