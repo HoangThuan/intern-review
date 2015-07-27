@@ -17,7 +17,6 @@ public class MainActivity extends FragmentActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.flFragmentPlace, fragment);
-
         fragmentTransaction.commit();
 
 
