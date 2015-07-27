@@ -28,21 +28,23 @@ public class CustomeCycleImageView extends ImageView {
         if (mDrawable == null) {
             return;
         }
-
         if (getWidth() == 0 || getHeight() == 0) {
             return;
         }
         Bitmap mBitmapDrawable = ((BitmapDrawable) mDrawable).getBitmap();
         Bitmap mBitmap = mBitmapDrawable.copy(Bitmap.Config.ARGB_8888, true);
-
         int w = getWidth(), h = getHeight();
-
         Bitmap roundBitmap = getRoundedCroppedBitmap(mBitmap, w);
         mCanvas.drawBitmap(roundBitmap, 0, 0, null);
 
     }
 
-
+    /**
+     * drawable cycle image
+     * @param bitmap
+     * @param radius with
+     * @return
+     */
     public static Bitmap getRoundedCroppedBitmap(Bitmap bitmap, int radius) {
         Bitmap finalBitmap;
         if (bitmap.getWidth() != radius || bitmap.getHeight() != radius)
@@ -54,11 +56,9 @@ public class CustomeCycleImageView extends ImageView {
         Bitmap output = Bitmap.createBitmap(finalBitmap.getWidth(),
                 finalBitmap.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
-
         final Paint paint = new Paint();
         final Rect rect = new Rect(0, 0, finalBitmap.getWidth(),
                 finalBitmap.getHeight());
-
         paint.setAntiAlias(true);
         paint.setFilterBitmap(true);
         paint.setDither(true);
