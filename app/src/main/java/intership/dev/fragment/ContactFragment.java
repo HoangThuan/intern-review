@@ -24,15 +24,16 @@ import intership.dev.sqlite.ContactSqlite;
  * Created by hoangthuan on 7/22/2015.
  */
 public class ContactFragment extends Fragment implements View.OnClickListener{
-    private CustomeCycleImageView customeCycleImageView;
-    private TextView tvNameContact;
-    private EditText edtNameContact;
-    private EditText edtDescription;
+    private CustomeCycleImageView mCustomeCycleImageView;
+    private TextView mTvNameContact;
+    private EditText mEdtNameContact;
+    private EditText mEdtDescription;
     private ContactSqlite mContactSqlite;
-    private LinearLayout llCannel;
-    private LinearLayout llSave;
+    private LinearLayout mLlCannel;
+    private LinearLayout mLlSave;
     private SQLiteDatabase mDb;
     private ContactItem mContactItem;
+    private LinearLayout mLlBack;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,40 +51,45 @@ public class ContactFragment extends Fragment implements View.OnClickListener{
     public void init(View view){
         mContactItem = (ContactItem)getArguments().getSerializable("SEND_DATA");
         mContactSqlite = new ContactSqlite(getActivity());
-        customeCycleImageView = (CustomeCycleImageView)view.findViewById(R.id.custom_ImageView);
-        tvNameContact = (TextView)view.findViewById(R.id.tvNameContact);
-        edtDescription = (EditText)view.findViewById(R.id.edtDeseription);
-        edtNameContact = (EditText)view.findViewById(R.id.edtNameContact);
-        llCannel = (LinearLayout)view.findViewById(R.id.llCannel);
-        llCannel.setOnClickListener(this);
-        llSave = (LinearLayout)view.findViewById(R.id.llSave);
-        llSave.setOnClickListener(this);
+        mCustomeCycleImageView = (CustomeCycleImageView)view.findViewById(R.id.custom_ImageView);
+        mTvNameContact = (TextView)view.findViewById(R.id.tvNameContact);
+        mEdtDescription = (EditText)view.findViewById(R.id.edtDeseription);
+        mEdtNameContact = (EditText)view.findViewById(R.id.edtNameContact);
+        mLlCannel = (LinearLayout)view.findViewById(R.id.llCannel);
+        mLlCannel.setOnClickListener(this);
+        mLlSave = (LinearLayout)view.findViewById(R.id.llSave);
+        mLlSave.setOnClickListener(this);
+        mLlBack = (LinearLayout)view.findViewById(R.id.llBack);
+        mLlBack.setOnClickListener(this);
     }
 
     /**
      * display data into layout
      */
     public  void display(){
-        customeCycleImageView.setImageResource(mContactItem.getmAvata());
-        tvNameContact.setText(mContactItem.getmUsername());
-        edtNameContact.setText(mContactItem.getmUsername());
-        edtDescription.setText(mContactItem.getmDecreption());
+        mCustomeCycleImageView.setImageResource(mContactItem.getmAvata());
+        mTvNameContact.setText(mContactItem.getmUsername());
+        mEdtNameContact.setText(mContactItem.getmUsername());
+        mEdtDescription.setText(mContactItem.getmDecreption());
     }
 
     @Override
     public void onClick(View view) {
-        if(view == llCannel){
+        if(view == mLlCannel){
             this.getActivity().onBackPressed();
         }
-        if(view == llSave){
+        if(view == mLlSave){
          mDb = mContactSqlite.getWritableDatabase();
-            if(mContactSqlite.updateContact(mContactItem.getmId(),edtNameContact.getText().toString(),edtDescription.getText().toString())){
+            if(mContactSqlite.updateContact(mContactItem.getmId(),mEdtNameContact.getText().toString(),mEdtDescription.getText().toString())){
                 Toast.makeText(getActivity(),R.string.messages_noti_Contact_update_success,Toast.LENGTH_LONG).show();
                 this.getActivity().onBackPressed();
             }
             else {
                 Toast.makeText(getActivity(),R.string.messages_noti_Contact_dont_update,Toast.LENGTH_LONG).show();
             }
+        }
+        if(view == mLlBack){
+            this.getActivity().onBackPressed();
         }
 
     }
