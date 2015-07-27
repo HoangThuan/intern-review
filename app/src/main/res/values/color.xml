@@ -10,4 +10,6 @@
     <color name="white">#ffffff</color>
     <color name="color.actionbar">#00bbd2</color>
     <color name="color.border.view">#ededed</color>
+    <color name="backroug.dialog">#f9f9f9</color>
+    <color name="color.selector">#80ffffff</color>
 </resources>
