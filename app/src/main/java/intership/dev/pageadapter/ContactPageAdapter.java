@@ -33,7 +33,7 @@ import intership.dev.sqlite.ContactSqlite;
 /**
  * Created by hoangthuan on 7/21/2015.
  */
-public class ContactsPageAdapter extends BaseAdapter {
+public class ContactPageAdapter extends BaseAdapter {
 
     private ArrayList<ContactItem> mContacts;
     private LayoutInflater mInflater;
@@ -46,7 +46,7 @@ public class ContactsPageAdapter extends BaseAdapter {
      * @param mContext
      * @param mContacts
      */
-    public ContactsPageAdapter(Context mContext ,ArrayList<ContactItem> mContacts){
+    public ContactPageAdapter(Context mContext, ArrayList<ContactItem> mContacts){
         this.mContacts = mContacts;
         this.mInflater = LayoutInflater.from(mContext);
         this.mContactSqlite = new ContactSqlite(mContext);
@@ -74,24 +74,24 @@ public class ContactsPageAdapter extends BaseAdapter {
         if(view == null ){
             holder = new Holder();
             view = mInflater.inflate(R.layout.item_list_contact,viewGroup,false);
-            holder.imgAvata = (CustomeCycleImageView)view.findViewById(R.id.imgCustomeCycleImage);
-            holder.tvNameContact = (TextView)view.findViewById(R.id.tvNameContact);
-            holder.imgEdit = (ImageView)view.findViewById(R.id.imgEdit);
-            holder.imgDelete = (ImageView)view.findViewById(R.id.imgDelete);
+            holder.mCustomeCycleImageView = (CustomeCycleImageView)view.findViewById(R.id.imgCustomeCycleImage);
+            holder.mTvNameContact = (TextView)view.findViewById(R.id.tvNameContact);
+            holder.mImgEdit = (ImageView)view.findViewById(R.id.imgEdit);
+            holder.mImgDelete = (ImageView)view.findViewById(R.id.imgDelete);
             view.setTag(holder);
         }
         else{
             holder = (Holder)view.getTag();
         }
-        holder.imgAvata.setImageResource(mContacts.get(position).getmAvata());
-        holder.tvNameContact.setText(mContacts.get(position).getmUsername());
-        holder.imgEdit.setOnClickListener(new OnClickListener() {
+        holder.mCustomeCycleImageView.setImageResource(mContacts.get(position).getmAvata());
+        holder.mTvNameContact.setText(mContacts.get(position).getmUsername());
+        holder.mImgEdit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 ContactItem contactItem = mContacts.get(position);
                 Fragment fragment = new ContactFragment();
-                FragmentManager fragmentManager = ((FragmentActivity) ContactsFragment.GET_ACTIVITY).getSupportFragmentManager();
+                FragmentManager fragmentManager = ((FragmentActivity) ContactsFragment.sActivity).getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("SEND_DATA",contactItem);
@@ -101,10 +101,10 @@ public class ContactsPageAdapter extends BaseAdapter {
                 fragmentTransaction.commit();
             }
         });
-        holder.imgDelete.setOnClickListener(new OnClickListener() {
+        holder.mImgDelete.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPopup(ContactsFragment.GET_ACTIVITY,position);
+                showPopup(ContactsFragment.sActivity,position);
             }
         });
 
@@ -114,10 +114,10 @@ public class ContactsPageAdapter extends BaseAdapter {
 
     class Holder
     {
-        CustomeCycleImageView imgAvata;
-        TextView tvNameContact;
-        ImageView imgEdit;
-        ImageView imgDelete;
+        CustomeCycleImageView mCustomeCycleImageView;
+        TextView mTvNameContact;
+        ImageView mImgEdit;
+        ImageView mImgDelete;
     }
 
     /**
@@ -173,13 +173,13 @@ public class ContactsPageAdapter extends BaseAdapter {
             public void onClick(View v) {
                 mDb= mContactSqlite.getWritableDatabase();
                 if(mContactSqlite.deleteContact(mContacts.get(postion).getmId())){
-                    Toast.makeText(ContactsFragment.GET_ACTIVITY,R.string.messages_noti_Contact_remove_success,Toast.LENGTH_LONG).show();
+                    Toast.makeText(ContactsFragment.sActivity,R.string.messages_noti_Contact_remove_success,Toast.LENGTH_LONG).show();
                     mContacts.remove(postion);
                     notifyDataSetChanged();
                     popup.dismiss();
                 }
                 else{
-                    Toast.makeText(ContactsFragment.GET_ACTIVITY,R.string.messages_noti_Contact_dont_remove,Toast.LENGTH_LONG).show();
+                    Toast.makeText(ContactsFragment.sActivity,R.string.messages_noti_Contact_dont_remove,Toast.LENGTH_LONG).show();
                 }
 
 
