@@ -19,18 +19,18 @@ import java.util.ArrayList;
 
 import intership.dev.contact.R;
 import intership.dev.item.ContactItem;
-import intership.dev.pageadapter.ContactsPageAdapter;
+import intership.dev.pageadapter.ContactPageAdapter;
 import intership.dev.sqlite.ContactSqlite;
 
 /**
  * Created by hoangthuan on 7/21/2015.
  */
 public class ContactsFragment extends Fragment {
-    private ListView lvContacts;
-    private ContactsPageAdapter mContactsPageAdapter;
+    private ListView mLvContacts;
+    private ContactPageAdapter mContactsPageAdapter;
     private ArrayList <ContactItem> mContacts;
-    private ProgressBar progressBar;
-    public static  Activity GET_ACTIVITY;
+    private ProgressBar mProgressBar;
+    public static  Activity sActivity;
     private SQLiteDatabase mDb;
     private ContactSqlite mContactSqlite;
 
@@ -39,7 +39,7 @@ public class ContactsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_contacts,container,false);
         init(view);
-//        setDataForSqlite();
+        setDataForSqlite();
         new getData().execute();
         return view;
     }
@@ -50,10 +50,10 @@ public class ContactsFragment extends Fragment {
      */
     public void init(View view){
         mContactSqlite = new ContactSqlite(this.getActivity());
-        GET_ACTIVITY=this.getActivity();
-        lvContacts = (ListView) view.findViewById(R.id.lvContacts);
-        progressBar = (ProgressBar)view.findViewById(R.id.progressBar);
-        progressBar.setVisibility(getView().VISIBLE);
+        sActivity=this.getActivity();
+        mLvContacts = (ListView) view.findViewById(R.id.lvContacts);
+        mProgressBar = (ProgressBar)view.findViewById(R.id.progressBar);
+        mProgressBar.setVisibility(getView().VISIBLE);
 
     }
 
@@ -93,24 +93,24 @@ public class ContactsFragment extends Fragment {
         @Override
         protected Void doInBackground(Void... params) {
                mContacts = new ArrayList<ContactItem>();
-               int count=lvContacts.getCount();
-               count+=10;
-               mContacts=mContactSqlite.getAllContact(""+count);
+               int count = mLvContacts.getCount();
+               count += 10;
+               mContacts = mContactSqlite.getAllContact(""+count);
             return null;
         }
 
         @Override
         protected void onPostExecute(Void result) {
-            mContactsPageAdapter = new ContactsPageAdapter(getActivity(),mContacts);
-            lvContacts.setAdapter(mContactsPageAdapter);
-            progressBar.setVisibility(getView().GONE);
-            lvContacts.setOnScrollListener(new AbsListView.OnScrollListener() {
+            mContactsPageAdapter = new ContactPageAdapter(getActivity(),mContacts);
+            mLvContacts.setAdapter(mContactsPageAdapter);
+            mProgressBar.setVisibility(getView().GONE);
+            mLvContacts.setOnScrollListener(new AbsListView.OnScrollListener() {
                 @Override
                 public void onScrollStateChanged(AbsListView absListView, int i) {
-                    int count=lvContacts.getCount();
+                    int count = mLvContacts.getCount();
 
                     if(i==SCROLL_STATE_IDLE){
-                        if(lvContacts.getLastVisiblePosition()>=count-1){
+                        if(mLvContacts.getLastVisiblePosition()>=count-1){
                             new LoadMoreDataTask().execute();
                         }
                     }
@@ -132,13 +132,13 @@ public class ContactsFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressBar.setVisibility(getView().VISIBLE);
+            mProgressBar.setVisibility(getView().VISIBLE);
         }
 
         @Override
         protected Void doInBackground(Void... params) {
             mContacts = new ArrayList<ContactItem>();
-            int count=lvContacts.getCount();
+            int count = mLvContacts.getCount();
             count+=10;
             mContacts=mContactSqlite.getAllContact(""+count);
             try {
@@ -151,11 +151,11 @@ public class ContactsFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void result) {
-            int position = lvContacts.getLastVisiblePosition();
-            mContactsPageAdapter = new ContactsPageAdapter(getActivity(),mContacts);
-            lvContacts.setAdapter(mContactsPageAdapter);
-            lvContacts.setSelectionFromTop(position, 0);
-            progressBar.setVisibility(getView().GONE);
+            int position = mLvContacts.getLastVisiblePosition();
+            mContactsPageAdapter = new ContactPageAdapter(getActivity(),mContacts);
+            mLvContacts.setAdapter(mContactsPageAdapter);
+            mLvContacts.setSelectionFromTop(position, 0);
+            mProgressBar.setVisibility(getView().GONE);
         }
     }
 
